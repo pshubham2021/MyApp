@@ -2,6 +2,11 @@
 
 A React + Bootstrap portfolio and journal with a Spring Boot, Spring Data JPA, and H2 backend. The public site is read-only; the private `/admin` page manages journal posts and attachments.
 
+## Project documentation
+
+- [Software/System Design Document](./docs/SSD.md) — architecture, requirements, data model, API, and security design.
+- [Operations and Support Manual](./docs/OSM.md) — local operation, deployment, health checks, troubleshooting, and backup guidance.
+
 ## Run locally
 
 Use Java 17 or newer, Maven, and Node.js.

@@ -1,0 +1,48 @@
+.admin-shell { max-width: 1000px; min-height: 100vh; padding: 0 30px; margin: 0 auto; }
+.admin-header { height: 74px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.admin-public-link { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; }
+.admin-public-link:hover, .admin-footer a:hover { color: var(--accent-strong); }
+.admin-loading { padding: 70px 0; color: var(--muted); }
+.admin-login { width: min(100%, 410px); margin: 90px auto; padding: 30px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); box-shadow: var(--shadow); }
+.admin-login h1, .admin-title-row h1 { margin: 8px 0; font-size: 29px; letter-spacing: -1px; }
+.admin-login > p { margin: 0 0 25px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.admin-submit { width: 100%; margin-top: 5px; }
+.admin-main { padding: 42px 0 56px; }
+.admin-title-row, .admin-editor-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.admin-editor { margin-top: 28px; padding: 24px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); box-shadow: var(--shadow); }
+.admin-editor-heading { margin-bottom: 20px; }
+.admin-editor-heading h2 { margin: 7px 0 0; font-size: 20px; letter-spacing: -.5px; }
+.admin-form-row { display: grid; grid-template-columns: .65fr 1.35fr; gap: 16px; }
+.admin-save-row { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+.admin-save-row > span { color: var(--muted); font-size: 10px; }
+.admin-posts { margin-top: 44px; }
+.admin-post-count { color: var(--muted); font-size: 10px; }
+.admin-post-list { border-top: 1px solid var(--line); }
+.admin-post-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+.admin-post-info { min-width: 0; }
+.admin-post-info h3 { margin: 8px 0 4px; font-size: 13px; }
+.admin-post-info p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+.admin-post-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.delete-button { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: #a45e50; cursor: pointer; }
+.delete-button:hover { border-color: #a45e50; background: #faefeb; }
+.delete-button:disabled, .write-button:disabled { opacity: .6; cursor: wait; }
+.admin-empty { padding: 20px 0; color: var(--muted); font-size: 11px; }
+.admin-notice { margin: 12px 0; padding: 10px 12px; border-radius: 4px; background: var(--accent-soft); color: var(--accent-strong); font-size: 10px; }
+.admin-attachments { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin: 0 0 15px; }
+.admin-attachments > .section-kicker { width: 100%; margin-bottom: 2px; font-size: 8px; }
+.admin-attachment { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; padding: 5px 7px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); font-size: 9px; }
+.admin-attachment button { display: grid; place-items: center; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.admin-attachment button:hover { color: #a45e50; }
+.admin-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 17px 0; border-top: 1px solid var(--line); color: var(--subtle); font-size: 9px; }
+.admin-footer a { color: var(--muted); }
+@media (max-width: 600px) {
+  .admin-shell { padding: 0 17px; }
+  .admin-login { margin: 52px auto; padding: 23px; }
+  .admin-main { padding-top: 30px; }
+  .admin-editor { padding: 19px 15px; }
+  .admin-form-row { grid-template-columns: 1fr; gap: 0; }
+  .admin-post-row { align-items: flex-start; }
+  .admin-post-actions { flex-direction: column; }
+  .admin-post-actions .write-button { padding: 8px; }
+  .admin-save-row { align-items: flex-start; flex-direction: column; }
+}

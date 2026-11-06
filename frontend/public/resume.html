@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f7f3" />
+    <title>Resume — Shubham</title>
+    <style>
+      :root { color-scheme: light; font-family: Arial, sans-serif; color: #24231f; background: #f8f7f3; }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 48px 20px; }
+      main { max-width: 760px; margin: auto; padding: 52px 60px; background: #fffefa; border: 1px solid #e9e7df; }
+      header { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+      h1 { margin: 0; font-size: 34px; letter-spacing: -1px; }
+      .role { margin: 8px 0 0; color: #527866; font-weight: 600; }
+      .contact { color: #77766f; font-size: 13px; line-height: 1.8; text-align: right; }
+      .notice { margin: 26px 0; padding: 12px 14px; border-left: 3px solid #527866; background: #e9f0e9; color: #3e6654; font-size: 13px; line-height: 1.6; }
+      section { margin-top: 30px; }
+      h2 { margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid #e9e7df; font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; }
+      p, li { color: #66655e; font-size: 14px; line-height: 1.7; }
+      ul { padding-left: 18px; }
+      .placeholder { color: #77766f; }
+      .actions { margin: 0 auto 15px; max-width: 760px; display: flex; justify-content: flex-end; }
+      button { padding: 10px 15px; border: 0; border-radius: 4px; background: #527866; color: white; font-weight: 600; cursor: pointer; }
+      @media (max-width: 560px) { body { padding: 18px 10px; } main { padding: 28px 22px; } header { flex-direction: column; } .contact { text-align: left; } }
+      @media print { :root { background: white; } body { padding: 0; } main { max-width: none; padding: 0; border: 0; } .actions, .notice { display: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="actions"><button type="button" onclick="window.print()">Print / save as PDF</button></div>
+    <main>
+      <header>
+        <div>
+          <h1>Shubham</h1>
+          <p class="role">Developer &amp; curious human</p>
+        </div>
+        <div class="contact">
+          <div>India</div>
+          <div><a href="mailto:hello@example.com">hello@example.com</a></div>
+          <div><a href="https://github.com/your-username">GitHub profile</a></div>
+        </div>
+      </header>
+      <p class="notice">Resume starter template — update the example details and contact links before sharing this page.</p>
+      <section>
+        <h2>Profile</h2>
+        <p class="placeholder">Write a short introduction about your experience, the problems you enjoy solving, and the kind of role or work you are looking for.</p>
+      </section>
+      <section>
+        <h2>Experience</h2>
+        <p><strong class="placeholder">Role title · Company</strong><br /><span class="placeholder">Month Year – Present · Location</span></p>
+        <ul><li class="placeholder">Describe a result, project, or responsibility. Add measurable impact where possible.</li><li class="placeholder">Add another achievement that shows how you work and what you contributed.</li></ul>
+      </section>
+      <section>
+        <h2>Projects</h2>
+        <p><strong class="placeholder">Project name</strong> · <span class="placeholder">Technology</span></p>
+        <p class="placeholder">Describe what you built, who it helped, and link to a live demo or repository.</p>
+      </section>
+      <section>
+        <h2>Education</h2>
+        <p><strong class="placeholder">Degree or qualification</strong><br /><span class="placeholder">Institution · Year</span></p>
+      </section>
+      <section>
+        <h2>Skills</h2>
+        <p class="placeholder">Add your programming languages, frameworks, tools, and areas of expertise.</p>
+      </section>
+    </main>
+  </body>
+</html>

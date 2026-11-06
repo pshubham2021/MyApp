@@ -1,0 +1,74 @@
+# Personal website
+
+A React + Bootstrap portfolio and journal with a Spring Boot, Spring Data JPA, and H2 backend. The public site is read-only; the private `/admin` page manages journal posts and attachments.
+
+## Run locally
+
+Use Java 17 or newer, Maven, and Node.js.
+
+1. Configure your private admin login and start the API. Use a unique password with at least 12 characters:
+
+   ```sh
+   export ADMIN_USERNAME="your-admin-name"
+   read -s ADMIN_PASSWORD
+   export ADMIN_PASSWORD
+   cd backend
+   mvn spring-boot:run
+   ```
+
+   Enter your password when prompted. Credentials are environment variables and must not be committed.
+
+2. In another terminal, start the public website:
+
+   ```sh
+   cd frontend
+   npm install
+   npm run dev
+   ```
+
+3. Open the Vite URL printed in the terminal (usually `http://localhost:5173`). The admin is at `/admin`.
+
+Posts are saved in a local H2 database at `backend/data/`, and uploaded files are stored in `backend/uploads/`. The first API start creates sample journal posts.
+
+## Deploy to Render from GitHub
+
+The included [render.yaml](./render.yaml) and [Dockerfile](./Dockerfile) deploy the React website and Spring Boot API together. A persistent disk stores the H2 database and uploaded files across deployments. This Render configuration uses a paid web service because persistent disks are not available on the free web-service plan.
+
+1. **Rotate the admin password.** The password previously shared in chat should be treated as exposed; do not reuse it. Choose a new, unique password of at least 12 characters.
+2. Create an **empty GitHub repository** (do not add a README or license; this project already has a README).
+3. From this project folder, initialize Git and push the source:
+
+   ```sh
+   git init
+   git add .
+   git commit -m "Prepare personal website for deployment"
+   git branch -M main
+   git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+   git push -u origin main
+   ```
+
+4. Sign in to Render, choose **New → Blueprint**, connect that GitHub repository, and deploy its `render.yaml`.
+5. When Render asks for the unsynced `ADMIN_PASSWORD`, enter your **new** password. The admin username is set to `Admin`. Credentials are private service environment variables; never add passwords to GitHub.
+6. Wait for the deployment to become **Live**. Open the `onrender.com` URL Render shows for the service; add `/admin` to sign in and manage posts.
+
+The blueprint sets `SESSION_COOKIE_SECURE=true` for HTTPS and mounts persistent storage at `/var/data`. Keep the persistent disk attached to preserve your posts and uploads. Uploaded attachments are publicly readable, as they are linked from public journal posts.
+
+### Updating the live site
+
+Push changes to the connected GitHub branch; Render will build and deploy them automatically. Edit profile links in `frontend/src/data.js` and resume content in `frontend/public/resume.html` before publishing.
+
+## Personalize it
+
+- Update your name, bio, email, resume destination, and social links in `frontend/src/data.js`.
+- Replace the example GitHub links and project descriptions in the same file.
+- Edit `frontend/public/resume.html` with your experience and contact details; the resume button opens this print-ready page.
+- Update the sample email and profile links before publishing.
+- For other production hosts, serve the frontend and API on the same origin, use HTTPS, and configure persistent storage for both the database and uploads.
+
+## API
+
+- `GET /api/posts?search=term&sort=newest|oldest|title` — search and sort posts.
+- `POST /api/auth/login` — authenticate with the configured admin username and password.
+- `POST /api/posts`, `PUT /api/posts/{id}`, `DELETE /api/posts/{id}` — admin-only post management.
+- `POST /api/uploads` — admin-only upload of a PDF, DOC, DOCX, TXT, MD, PNG, JPG, GIF, or WEBP file (maximum 10 MB).
+- `GET /uploads/{filename}` — retrieve an uploaded attachment.

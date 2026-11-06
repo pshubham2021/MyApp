@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ExternalLink, FileText, Printer } from 'lucide-react';
+import { ArrowLeft, ExternalLink, FileText, Moon, Printer, Sun } from 'lucide-react';
 import packageInfo from '../package.json';
+import { useTheme } from './useTheme.js';
 import './resume.css';
 
 const emptyResume = {
@@ -36,6 +37,7 @@ function lineItems(text) {
 }
 
 function ResumePage() {
+  const { darkMode, toggleTheme } = useTheme();
   const [resume, setResume] = useState(emptyResume);
   const [template, setTemplate] = useState('without-photo');
   const [loading, setLoading] = useState(true);
@@ -76,6 +78,10 @@ function ResumePage() {
       <nav className="resume-toolbar" aria-label="Resume actions">
         <a className="resume-back" href="/"><ArrowLeft size={16} /> Portfolio</a>
         <div className="resume-toolbar-actions">
+          <button type="button" className="resume-theme-toggle" onClick={toggleTheme} aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}>
+            {darkMode ? <Sun size={15} /> : <Moon size={15} />}
+            {darkMode ? 'Light mode' : 'Dark mode'}
+          </button>
           <div className="resume-template-switch" role="group" aria-label="Resume template">
             <button type="button" className={!showPhoto ? 'selected' : ''} onClick={() => setTemplate('without-photo')}>Without photo</button>
             <button type="button" className={showPhoto ? 'selected' : ''} onClick={() => setTemplate('with-photo')}>With photo</button>

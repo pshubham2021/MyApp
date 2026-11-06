@@ -66,6 +66,7 @@ Push changes to the connected GitHub branch; Render will build and deploy them a
 
 - Update your name, bio, email, and social links in `frontend/src/data.js`.
 - Replace the example GitHub links and project descriptions in the same file.
+- The light/dark mode toggle is available on the portfolio, resume, and admin pages; its setting is saved and synchronized across pages in the same browser.
 - Edit resume details after signing in at `/admin` and selecting **Resume**. The public `/resume.html` page offers standard templates with and without a photo and a **Print / save PDF** action.
 - Update the sample email and profile links before publishing.
 - The public portfolio and resume show the frontend application version from `frontend/package.json`.

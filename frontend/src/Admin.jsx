@@ -5,13 +5,16 @@ import {
   FileText,
   Image,
   LogOut,
+  Moon,
   Pencil,
   Plus,
+  Sun,
   Trash2,
   Upload,
   X,
 } from 'lucide-react';
 import { profile } from './data.js';
+import { useTheme } from './useTheme.js';
 import './admin.css';
 
 async function getCsrfToken() {
@@ -40,6 +43,7 @@ async function requestJson(url, options = {}, csrfToken) {
 }
 
 function AdminPage() {
+  const { darkMode, toggleTheme } = useTheme();
   const [authenticated, setAuthenticated] = useState(false);
   const [csrfToken, setCsrfToken] = useState('');
   const [initializing, setInitializing] = useState(true);
@@ -257,7 +261,13 @@ function AdminPage() {
     <div className="admin-shell">
       <header className="admin-header">
         <a className="brand" href="/"><span className="brand-mark">s.</span><span>{profile.name}<span className="brand-dot">.</span></span></a>
-        <a className="admin-public-link" href="/"><ArrowLeft size={15} /> View public website</a>
+        <div className="admin-header-actions">
+          <button className="theme-toggle" onClick={toggleTheme} aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}>
+            {darkMode ? <Sun size={16} /> : <Moon size={16} />}
+            <span>{darkMode ? 'Light mode' : 'Dark mode'}</span>
+          </button>
+          <a className="admin-public-link" href="/"><ArrowLeft size={15} /> View public website</a>
+        </div>
       </header>
 
       {initializing ? (

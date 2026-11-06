@@ -24,6 +24,7 @@ import {
   X,
 } from 'lucide-react';
 import { profile, projects, samplePosts } from './data.js';
+import { useTheme } from './useTheme.js';
 import packageInfo from '../package.json';
 
 const iconMap = { sparkles: Sparkles, book: BookOpen, cloud: Cloud };
@@ -35,17 +36,12 @@ function formatDate(value) {
 }
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
+  const { darkMode, toggleTheme } = useTheme();
   const [posts, setPosts] = useState(samplePosts);
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('newest');
   const [apiError, setApiError] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = darkMode ? 'dark' : 'light';
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-  }, [darkMode]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -102,7 +98,7 @@ function App() {
           <a href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</a>
           <a href="#journal" onClick={() => setMobileMenuOpen(false)}>Journal</a>
           <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
-          <button className="theme-toggle" onClick={() => setDarkMode((mode) => !mode)}>
+          <button className="theme-toggle" onClick={toggleTheme} aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}>
             {darkMode ? <Sun size={16} /> : <Moon size={16} />}
             <span>{darkMode ? 'Light mode' : 'Dark mode'}</span>
           </button>

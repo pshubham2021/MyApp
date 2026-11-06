@@ -1,5 +1,7 @@
 .admin-shell { max-width: 1000px; min-height: 100vh; padding: 0 30px; margin: 0 auto; }
 .admin-header { height: 74px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.admin-header > .admin-header-actions { width: auto; justify-content: flex-end; }
+.admin-header .theme-toggle { font-size: 11px; }
 .admin-public-link { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; }
 .admin-public-link:hover, .admin-footer a:hover { color: var(--accent-strong); }
 .admin-loading { padding: 70px 0; color: var(--muted); }
@@ -65,6 +67,7 @@
   .admin-form-row { grid-template-columns: 1fr; gap: 0; }
   .admin-title-row { align-items: flex-start; flex-direction: column; }
   .admin-header-actions { width: 100%; justify-content: space-between; }
+  .admin-header > .admin-header-actions { width: auto; }
   .resume-admin-grid, .resume-admin-grid-three { grid-template-columns: 1fr; gap: 0; }
   .resume-photo-editor { align-items: flex-start; flex-direction: column; }
   .resume-photo-controls { justify-content: flex-start; }

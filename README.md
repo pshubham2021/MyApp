@@ -32,7 +32,7 @@ Posts are saved in a local H2 database at `backend/data/`, and uploaded files ar
 
 ## Deploy to Render from GitHub
 
-The included [render.yaml](./render.yaml) and [Dockerfile](./Dockerfile) deploy the React website and Spring Boot API together. A persistent disk stores the H2 database and uploaded files across deployments. This Render configuration uses a paid web service because persistent disks are not available on the free web-service plan.
+The included [render.yaml](./render.yaml) and [Dockerfile](./Dockerfile) deploy the React website and Spring Boot API together on Render's free web-service plan. Free services use an ephemeral filesystem: H2 posts and uploaded files can be erased on restart, redeploy, or service sleep. Free services can also sleep while idle and take time to wake up. Upgrade to a paid plan with persistent storage if posts and uploads must survive.
 
 1. **Rotate the admin password.** The password previously shared in chat should be treated as exposed; do not reuse it. Choose a new, unique password of at least 12 characters.
 2. Create an **empty GitHub repository** (do not add a README or license; this project already has a README).
@@ -51,7 +51,7 @@ The included [render.yaml](./render.yaml) and [Dockerfile](./Dockerfile) deploy 
 5. When Render asks for the unsynced `ADMIN_PASSWORD`, enter your **new** password. The admin username is set to `Admin`. Credentials are private service environment variables; never add passwords to GitHub.
 6. Wait for the deployment to become **Live**. Open the `onrender.com` URL Render shows for the service; add `/admin` to sign in and manage posts.
 
-The blueprint sets `SESSION_COOKIE_SECURE=true` for HTTPS and mounts persistent storage at `/var/data`. Keep the persistent disk attached to preserve your posts and uploads. Uploaded attachments are publicly readable, as they are linked from public journal posts.
+The blueprint sets `SESSION_COOKIE_SECURE=true` for HTTPS. With this free configuration, do not rely on the local H2 database or uploaded files as backups. Uploaded attachments are publicly readable, as they are linked from public journal posts.
 
 ### Updating the live site
 

@@ -24,6 +24,7 @@ import {
   X,
 } from 'lucide-react';
 import { profile, projects, samplePosts } from './data.js';
+import packageInfo from '../package.json';
 
 const iconMap = { sparkles: Sparkles, book: BookOpen, cloud: Cloud };
 
@@ -264,6 +265,7 @@ function App() {
         <footer className="site-footer">
           <a className="brand footer-brand" href="#home"><span className="brand-mark">s.</span><span>{profile.name}<span className="brand-dot">.</span></span></a>
           <span>Made with care, and probably too much coffee.</span>
+          <span className="site-version">App v{packageInfo.version}</span>
           <a href="/admin">Admin</a>
         </footer>
       </main>

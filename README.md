@@ -1,6 +1,6 @@
 # Personal website
 
-A React + Bootstrap portfolio and journal with a Spring Boot, Spring Data JPA, and H2 backend. The public site is read-only; the private `/admin` page manages journal posts and attachments.
+A React + Bootstrap portfolio and journal with a Spring Boot, Spring Data JPA, and H2 backend. The public site is read-only; the private `/admin` page manages journal posts, attachments, and the printable resume.
 
 ## Project documentation
 
@@ -33,7 +33,7 @@ Use Java 17 or newer, Maven, and Node.js.
 
 3. Open the Vite URL printed in the terminal (usually `http://localhost:5173`). The admin is at `/admin`.
 
-Posts are saved in a local H2 database at `backend/data/`, and uploaded files are stored in `backend/uploads/`. The first API start creates sample journal posts.
+Posts and resume details are saved in a local H2 database at `backend/data/`, and uploaded files are stored in `backend/uploads/`. The first API start creates sample journal posts.
 
 ## Deploy to Render from GitHub
 
@@ -60,19 +60,22 @@ The blueprint sets `SESSION_COOKIE_SECURE=true` for HTTPS. With this free config
 
 ### Updating the live site
 
-Push changes to the connected GitHub branch; Render will build and deploy them automatically. Edit profile links in `frontend/src/data.js` and resume content in `frontend/public/resume.html` before publishing.
+Push changes to the connected GitHub branch; Render will build and deploy them automatically. Edit profile links in `frontend/src/data.js` and resume content in the admin area before publishing.
 
 ## Personalize it
 
-- Update your name, bio, email, resume destination, and social links in `frontend/src/data.js`.
+- Update your name, bio, email, and social links in `frontend/src/data.js`.
 - Replace the example GitHub links and project descriptions in the same file.
-- Edit `frontend/public/resume.html` with your experience and contact details; the resume button opens this print-ready page.
+- Edit resume details after signing in at `/admin` and selecting **Resume**. The public `/resume.html` page offers standard templates with and without a photo and a **Print / save PDF** action.
 - Update the sample email and profile links before publishing.
+- The public portfolio and resume show the frontend application version from `frontend/package.json`.
 - For other production hosts, serve the frontend and API on the same origin, use HTTPS, and configure persistent storage for both the database and uploads.
 
 ## API
 
 - `GET /api/posts?search=term&sort=newest|oldest|title` — search and sort posts.
+- `GET /api/resume` — retrieve the public resume.
+- `PUT /api/resume` — admin-only save of resume details and sections.
 - `POST /api/auth/login` — authenticate with the configured admin username and password.
 - `POST /api/posts`, `PUT /api/posts/{id}`, `DELETE /api/posts/{id}` — admin-only post management.
 - `POST /api/uploads` — admin-only upload of a PDF, DOC, DOCX, TXT, MD, PNG, JPG, GIF, or WEBP file (maximum 10 MB).

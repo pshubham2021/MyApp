@@ -88,6 +88,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/csrf", "/api/auth/login", "/api/auth/me").permitAll()
                         .requestMatchers("/api/health").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/resume").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/posts").permitAll()
                         .requestMatchers("/uploads/**").permitAll()
                         .requestMatchers("/api/**").authenticated()

@@ -46,7 +46,7 @@ npm ci
 npm run dev
 ```
 
-Open the Vite URL printed in the terminal (normally `http://localhost:5173`). The admin interface is at `/admin`. Local H2 data is under `backend/data/`; uploaded files are under `backend/uploads/`. The backend creates sample posts only if the database is empty.
+Open the Vite URL printed in the terminal (normally `http://localhost:5173`). The admin interface is at `/admin`; the resume is at `/resume.html`. Local H2 data is under `backend/data/`; uploaded files are under `backend/uploads/`. The backend creates sample posts only if the database is empty.
 
 ### Build commands
 
@@ -71,8 +71,10 @@ The production Docker build performs both builds and packages the compiled front
 4. If needed, add an allowed attachment (PDF, DOC, DOCX, TXT, MD, PNG, JPG/JPEG, GIF, or WEBP; maximum 10 MiB). Uploaded files are publicly accessible by design.
 5. Preview the public journal after saving. Search and sorting are available to visitors.
 6. Delete posts only after confirming the selection; this action cannot be undone through the UI.
+7. Select the **Resume** admin tab to edit contact details and standard resume sections. Add a portrait if desired, then save. The portrait is public and appears only in the photo template.
+8. Open `/resume.html`, choose **With photo** or **Without photo**, then use **Print / save PDF** and choose a PDF destination in the browser's print dialog.
 
-Update public profile and project details in `frontend/src/data.js`; update resume content in `frontend/public/resume.html`.
+Update public profile and project details in `frontend/src/data.js`. The application version shown on the portfolio and resume is read from `frontend/package.json`.
 
 ## 5. Render deployment and verification
 
@@ -104,6 +106,8 @@ curl -fsS -o /dev/null -w '%{http_code}\n' https://shubham-personal-website.onre
 
 Expected: health returns `{"status":"ok"}` and the three page/API checks return HTTP 200. Free services can sleep when idle; allow time for a cold start before treating the first failed request as an outage.
 
+The public resume page should also load `GET /api/resume`; saving the resume requires an authenticated admin session and returns HTTP 401 when called anonymously.
+
 ### Environment configuration
 
 | Variable | Required value/handling |
@@ -121,7 +125,7 @@ Never commit `.env` files, passwords, session cookies, or uploaded private data.
 
 ### Current Render free service
 
-The current Blueprint uses a free web service without a persistent disk. Both the H2 database and uploaded files are on an ephemeral filesystem and may be erased on restart, redeploy, or other service lifecycle events. Free service instances can also sleep. Treat this hosting configuration as a demo, not as the authoritative copy of important posts or files.
+The current Blueprint uses a free web service without a persistent disk. Posts, resume details in H2, and uploaded files are on an ephemeral filesystem and may be erased on restart, redeploy, or other service lifecycle events. Free service instances can also sleep. Treat this hosting configuration as a demo, not as the authoritative copy of important content or files.
 
 There is no automated export or backup job in the application. The admin interface has no restore/import function. Keep independent copies of important post text and attachments. For durable production use, move to storage with a persistent disk or managed database/object storage, configure the application to use that durable storage, and verify backups and restores before relying on it.
 

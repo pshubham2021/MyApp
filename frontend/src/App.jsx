@@ -159,7 +159,7 @@ function App() {
                   <span className="section-kicker">A FEW THINGS I&apos;VE MADE</span>
                   <h2>Selected projects<span className="heading-period">.</span></h2>
                 </div>
-                <a className="section-link" href="https://github.com/your-username" target="_blank" rel="noreferrer">
+                <a className="section-link" href={profile.socials.find((social) => social.name === 'GitHub').url} target="_blank" rel="noreferrer">
                   More on GitHub <ExternalLink size={14} />
                 </a>
               </div>

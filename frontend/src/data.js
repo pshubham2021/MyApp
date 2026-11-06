@@ -3,13 +3,13 @@ export const profile = {
   role: 'Developer & curious human',
   location: 'India',
   bio: 'Building useful things for the web, collecting little ideas, and sharing what I learn along the way.',
-  email: 'hello@example.com',
+  email: 'shubhampjpt2026@gmail.com',
   resumeUrl: '/resume.html',
   socials: [
-    { name: 'GitHub', url: 'https://github.com/your-username' },
-    { name: 'Instagram', url: 'https://instagram.com/your-username' },
-    { name: 'Facebook', url: 'https://facebook.com/your-username' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/your-username' },
+    { name: 'GitHub', url: 'https://github.com/pshubham2021/' },
+    { name: 'Instagram', url: 'https://www.instagram.com/shubham.pjpt/' },
+    { name: 'Facebook', url: 'https://www.facebook.com/max.kumar.50115' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/shubham-prajapati-abc2020/' },
   ],
 };
 
